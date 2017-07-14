@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>sd_file_loader_for_orders</id>
+    <version>1.0</version>
+    <priority>99999</priority>
+    <position>0</position>
+    <default_language>en</default_language>
+	<auto_install>MULTIVENDOR,ULTIMATE</auto_install>
+	<status>active</status>
+	<queries>
+	<item>DROP TABLE IF EXISTS ?:order_files;</item>
+	<item>
+            CREATE TABLE `?:order_files` (
+                `file_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `filename` varchar(100) NOT NULL default '',
+                `filesize` int(11) unsigned NOT NULL default '0',
+                `order_id` mediumint(8) NOT NULL,
+                PRIMARY KEY  (`file_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET UTF8;
+    </item>
+	<item for="uninstall">DROP TABLE IF EXISTS ?:order_files;</item>
+	</queries>
+</addon>
