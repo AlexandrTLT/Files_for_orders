@@ -16,9 +16,13 @@ use Tygh\Registry;
 
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
-Registry::set('config.storage.order_files', array(
-    'prefix' => 'order_files',
-    'secured' => true,
-    'dir' => Registry::get('config.dir.var')
-));
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($mode == 'update' || $mode == 'add') {
+        if (isset($_REQUEST['attachment_data'])) {
+            fn_add_orderfiles($_REQUEST['attachment_data'], $_REQUEST['attachment_id'], $_REQUEST['object_id'], null);
+        }
+    }
+
+    return array(CONTROLLER_STATUS_OK);
+}
 ?>
