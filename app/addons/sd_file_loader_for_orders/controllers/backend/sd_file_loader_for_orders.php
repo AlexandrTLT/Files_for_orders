@@ -22,7 +22,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             fn_add_orderfiles($_REQUEST['attachment_data'], $_REQUEST['attachment_id'], $_REQUEST['object_id'], null);
         }
     }
+	elseif ($mode == 'delete') {
+        fn_delete_orderfile($_REQUEST['file_id'], $_REQUEST['order_id'], $_REQUEST['filename']);
+
+        exit;
+    }
 
     return array(CONTROLLER_STATUS_OK);
+}
+
+if ($mode == 'update' || $mode == 'add') {
+	$order_files = fn_get_orderfiles($_REQUEST['order_id']);
+
+    Registry::set('navigation.tabs.attachments', array (
+        'title' => __('attachments'),
+        'js' => true
+    ));
+
+    Tygh::$app['view']->assign('attachments', $order_files);
+}
+elseif ($mode == 'getfile') {
+    if (!empty($_REQUEST['file_id'])) {
+        fn_get_orderfile($_REQUEST['file_id']);
+    }
+    exit;
 }
 ?>

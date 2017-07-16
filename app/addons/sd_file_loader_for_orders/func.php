@@ -54,4 +54,41 @@ function fn_add_orderfiles($file_data, $file_id, $order_id, $files = null)
 
     return $file_id;
 }
+
+function fn_get_orderfiles($order_id)
+{
+
+    return db_get_array("SELECT * FROM ?:order_files WHERE order_id = ?i ORDER BY file_id", $order_id);
+}
+
+function fn_get_orderfile($file_id)
+{
+    $data = db_get_row("SELECT * FROM ?:order_files WHERE file_id = ?i", $file_id);
+	
+    if (empty($data)) {
+        return false;
+    }
+
+    $attachment_obj = Storage::instance('order_files');
+    $attachment_filename = 'orders/' . $data['order_id'] . '/' . $data['filename'];
+
+    if (!$attachment_obj->isExist($attachment_filename)) {
+        return false;
+    }
+
+    $attachment_obj->get($attachment_filename);
+
+    exit;
+}
+
+function fn_delete_orderfile($file_id, $order_id, $filename)
+{
+    $data = db_get_array("SELECT * FROM ?:order_files WHERE file_id = ?i", $file_id);
+
+    Storage::instance('order_files')->delete('orders/' . $order_id . '/' . $filename);
+
+    db_query("DELETE FROM ?:order_files WHERE file_id = ?i", $file_id);
+
+    return true;
+}
 ?>
