@@ -91,4 +91,43 @@ function fn_delete_orderfile($file_id, $order_id, $filename)
 
     return true;
 }
+
+function fn_get_forders_ids()
+{
+    $data = db_get_array("SELECT order_id FROM ?:order_files");
+
+    return $data;
+}
+
+function fn_get_orders_files_filter()
+{
+	$params['status'] == STATUS_INCOMPLETED_ORDER;
+    $params['include_incompleted'] = true;
+    
+    if (fn_allowed_for('MULTIVENDOR')) {
+        $params['company_name'] = true;
+    }
+	$qt = db_get_fields("SELECT MAX( CAST( order_id AS UNSIGNED ) ) FROM ?:orders");
+	$params['items_per_page'] = $qt[0];
+	$orders_files = fn_get_forders_ids();
+	
+    list($orders, $search, $totals) = fn_get_orders($params);
+	
+	$a = 0;
+	$norders = array();
+	
+	foreach($orders_files as $of)
+	{
+		foreach($orders as $or)
+		{
+			if($or['order_id'] == $of['order_id'])
+			{
+				$norders[$a] = $or;
+				$a++;
+			}
+		}
+	}
+	
+	return $norders;
+}
 ?>

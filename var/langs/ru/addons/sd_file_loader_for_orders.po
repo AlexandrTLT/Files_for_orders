@@ -1,6 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: cs-cart-latest\n"
+msgstr "Project-Id-Version: tygh\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -12,4 +11,9 @@ msgstr "Загрузчик файлов для заказов"
 msgctxt "Addons::description::sd_file_loader_for_orders"
 msgid "Модуль загрузки файлов на сервер для раздела заказы"
 msgstr "Модуль загрузки файлов на сервер для раздела заказы"
+
+msgctxt "Languages::filter_orderfiles"
+msgid "With files only"
+msgstr "С файлами"
+
 

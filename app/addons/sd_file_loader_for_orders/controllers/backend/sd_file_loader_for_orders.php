@@ -27,24 +27,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         exit;
     }
+	elseif ($mode == 'getforders') {
+        Tygh::$app['view']->display('views/orders/views/manage.tpl');
+
+        exit;
+    }
+
 
     return array(CONTROLLER_STATUS_OK);
 }
 
-if ($mode == 'update' || $mode == 'add') {
-	$order_files = fn_get_orderfiles($_REQUEST['order_id']);
-
-    Registry::set('navigation.tabs.attachments', array (
-        'title' => __('attachments'),
-        'js' => true
-    ));
-
-    Tygh::$app['view']->assign('attachments', $order_files);
-}
-elseif ($mode == 'getfile') {
+if ($mode == 'getfile') {
     if (!empty($_REQUEST['file_id'])) {
         fn_get_orderfile($_REQUEST['file_id']);
     }
     exit;
 }
+elseif ($mode == 'getforders') {
+    $orders = fn_get_orders_files_filter();
+
+    Tygh::$app['view']->assign('orders', $orders);
+    }
 ?>
