@@ -5,15 +5,18 @@ msgstr "Project-Id-Version: tygh\n"
 "Language: ru_RU\n"
 
 msgctxt "Addons::name::sd_file_loader_for_orders"
-msgid "Загрузчик файлов для заказов"
-msgstr "Загрузчик файлов для заказов"
+msgid "Files in orders"
+msgstr "Файлы в заказах"
 
 msgctxt "Addons::description::sd_file_loader_for_orders"
-msgid "Модуль загрузки файлов на сервер для раздела заказы"
-msgstr "Модуль загрузки файлов на сервер для раздела заказы"
+msgid "Модуль позволяет прикреплять файлы к заказам"
+msgstr "Модуль позволяет прикреплять файлы к заказам"
 
 msgctxt "Languages::filter_orderfiles"
 msgid "With files only"
 msgstr "С файлами"
 
+msgctxt "Languages::oftable"
+msgid "Заказы и файлы"
+msgstr "Заказы и файлы"
 

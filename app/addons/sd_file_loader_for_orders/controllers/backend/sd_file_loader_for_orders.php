@@ -47,5 +47,10 @@ elseif ($mode == 'getforders') {
     $orders = fn_get_orders_files_filter();
 
     Tygh::$app['view']->assign('orders', $orders);
-    }
+}
+elseif ($mode == 'oftable') {
+    $orders = fn_get_orders_files_for_table();
+
+    Tygh::$app['view']->assign('orders', $orders);
+}
 ?>

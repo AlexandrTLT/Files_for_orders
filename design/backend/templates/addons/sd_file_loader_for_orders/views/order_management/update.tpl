@@ -21,7 +21,7 @@
         </div>
     </div>
 </div>
-
+{if !$no_edit}
 <div class="buttons-container">
     {if $orfile.file_id}
         {assign var="id" value=$orfile.file_id}    
@@ -35,5 +35,5 @@
 	
     {include file="buttons/save_cancel.tpl" but_name="dispatch[sd_file_loader_for_orders.update]" cancel_action="close" hide_first_button=$hide_first_button save=$id}
 </div>
-
+{/if}
 </form>

@@ -15,3 +15,7 @@ msgstr "This module is designed to load files in the orders"
 msgctxt "Languages::filter_orderfiles"
 msgid "With files only"
 msgstr "With files only"
+
+msgctxt "Languages::oftable"
+msgid "Orders files"
+msgstr "Orders files"

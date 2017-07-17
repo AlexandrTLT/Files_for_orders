@@ -2,9 +2,8 @@
 <addon scheme="3.0">
     <id>sd_file_loader_for_orders</id>
     <version>1.0</version>
-    <priority>99999</priority>
-    <position>0</position>
-    <default_language>en</default_language>
+    <priority>500</priority>
+    <default_language>ru</default_language>
 	<auto_install>MULTIVENDOR,ULTIMATE</auto_install>
 	<status>active</status>
 	<queries>

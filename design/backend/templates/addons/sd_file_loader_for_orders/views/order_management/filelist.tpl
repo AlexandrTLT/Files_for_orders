@@ -1,6 +1,9 @@
 <table width="100%" class="table table-middle table-objects{if $table_striped} table-striped{/if}">
     <tbody>
         <tr class="cm-row-status-{$status|lower} {$additional_class} cm-row-item" {if $row_id}id="{$row_id}"{/if} data-ct-{$table}="{$id}">
+		 <td width="1%" class="no-padding-td">
+                    <span class="handler cm-sortable-handle"></span>
+            </td>
 
             <td width="{if $href_desc}77{else}28{/if}%">
                 <div class="object-group-link-wrap">
@@ -17,7 +20,7 @@
             {/if}
 
             <td width="22%" class="right nowrap">
-
+                {if !$no_edit}
                 <div class="pull-right hidden-tools">
                     {capture name="items_tools"}
                     {if $tool_items}
@@ -38,6 +41,7 @@
                     {/capture}
                     {dropdown content=$smarty.capture.items_tools class="dropleft"}
                 </div>
+				{/if}
                 {$links nofilter}
             </td>
             

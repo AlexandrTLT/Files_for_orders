@@ -114,20 +114,38 @@ function fn_get_orders_files_filter()
     list($orders, $search, $totals) = fn_get_orders($params);
 	
 	$a = 0;
+	$b = 0;
 	$norders = array();
+	$checker = array();
 	
 	foreach($orders_files as $of)
 	{
 		foreach($orders as $or)
 		{
+			$b = 0;
 			if($or['order_id'] == $of['order_id'])
 			{
+				foreach($checker as $ch)
+		        {
+				    if($ch == $or['order_id']) { $b++; }
+		        }
+				if($b == 0)
+				{
 				$norders[$a] = $or;
+				$checker[$a] = $of['order_id'];
 				$a++;
+				}
 			}
 		}
 	}
 	
 	return $norders;
+}
+
+function fn_get_orders_files_for_table()
+{
+	$data = db_get_array("SELECT * FROM ?:order_files ORDER BY order_id");
+	
+	return $data;
 }
 ?>
