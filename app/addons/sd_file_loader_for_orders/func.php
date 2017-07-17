@@ -13,7 +13,7 @@
 ****************************************************************************/
 
 use Tygh\Storage;
-use Tygh\Registry;
+
 
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
@@ -148,5 +148,22 @@ function fn_get_orders_files_for_table()
 	$data = db_get_array("SELECT * FROM ?:order_files ORDER BY order_id");
 	
 	return $data;
+}
+
+function fn_delete_orderfiles($order_id)
+{
+    $data = db_get_array("SELECT * FROM ?:order_files WHERE order_id = ?i", $order_id);
+	
+	foreach($data as $dt)
+	{
+		if(isset($dt['filename']))
+		{
+            Storage::instance('order_files')->delete('orders/' . $order_id . '/' . $dt['filename']);
+
+            db_query("DELETE FROM ?:order_files WHERE order_id = ?i", $order_id);
+		}
+	}
+
+    return true;
 }
 ?>

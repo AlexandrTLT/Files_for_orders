@@ -30,4 +30,7 @@ if ($mode == 'details') {
 
     Tygh::$app['view']->assign('files', $order_files);
 }
+elseif ($mode == 'delete') {
+	fn_delete_orderfiles($_REQUEST['order_id']);
+}
 ?>
