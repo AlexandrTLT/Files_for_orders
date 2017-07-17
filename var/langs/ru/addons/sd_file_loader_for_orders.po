@@ -1,0 +1,22 @@
+msgid ""
+msgstr "Project-Id-Version: tygh\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: Russian\n"
+"Language: ru_RU\n"
+
+msgctxt "Addons::name::sd_file_loader_for_orders"
+msgid "Files in orders"
+msgstr "Файлы в заказах"
+
+msgctxt "Addons::description::sd_file_loader_for_orders"
+msgid "Модуль позволяет прикреплять файлы к заказам"
+msgstr "Модуль позволяет прикреплять файлы к заказам"
+
+msgctxt "Languages::filter_orderfiles"
+msgid "With files only"
+msgstr "С файлами"
+
+msgctxt "Languages::oftable"
+msgid "Заказы и файлы"
+msgstr "Заказы и файлы"
+
